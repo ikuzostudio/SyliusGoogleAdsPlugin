@@ -1,0 +1,16 @@
+services:
+  ikuzo_sylius_google_ads.event_listener.google_ads_clic:
+    class: Ikuzo\SyliusGoogleAdsPlugin\EventListener\GoogleClicIDListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.request }
+
+  ikuzo_sylius_google_ads.event_listener.order:
+    public: true
+    class: Ikuzo\SyliusGoogleAdsPlugin\EventListener\OrderEventListener
+    arguments:
+      - '@request_stack'
+    # tags:
+    #   - { name: kernel.event_listener, event: sylius.order.pre_update, method: _check }
+    #   - { name: kernel.event_listener, event: sylius.order.pre_create, method: _check }
+    #   - { name: kernel.event_listener, event: sylius.cart_change, method: _check }
+    #   - { name: kernel.event_listener, event: sylius.order_item.pre_create, method: _check }

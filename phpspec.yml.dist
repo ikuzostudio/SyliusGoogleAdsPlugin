@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Ikuzo\SyliusGoogleAdsPlugin
+        psr4_prefix: Ikuzo\SyliusGoogleAdsPlugin

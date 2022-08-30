@@ -1,0 +1,22 @@
+sylius_grid:
+  grids:
+    sylius_admin_order:
+      filters:
+        isGoogleAdsTracked:
+          type: boolean
+          label: ikuzo_google_ads.grid.filters.tracked
+      fields:
+        isGoogleAdsTracked:
+          type: twig
+          label: ikuzo_google_ads.grid.filters.tracked
+          options:
+              template: "@SyliusUi/Grid/Field/yesNo.html.twig"
+
+winzou_state_machine:
+  sylius_order_checkout:
+    callbacks:
+      after:
+        ikuzo_google_ads_gclid_check:
+          on: [cart, address, complete]
+          do: ["@ikuzo_sylius_google_ads.event_listener.order", "_check"]
+          args: ["object"]
